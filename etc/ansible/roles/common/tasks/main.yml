@@ -1,0 +1,10 @@
+---
+- name: Update apt-get
+  apt: update_cache=yes
+
+- name: install Java JDK
+  apt: name=openjdk-7-jdk state=present
+
+- name: Install unzip
+  apt: name=unzip state=present
+
