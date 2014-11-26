@@ -9,7 +9,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
   config.vm.network "private_network", ip: "192.168.5.5"
   config.vm.synced_folder ".", "/couchdemo"
-
+  config.vm.network "forwarded_port", guest: 15986, host: 15986
+  config.vm.network "forwarded_port", guest: 15984, host: 15984
+  config.vm.network "forwarded_port", guest: 25986, host: 25986
+  config.vm.network "forwarded_port", guest: 25984, host: 25984
+  config.vm.network "forwarded_port", guest: 35986, host: 35986
+  config.vm.network "forwarded_port", guest: 35984, host: 35984
+  
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "2"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -22,11 +28,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       proxy_user: "user",
       proxy_password: "pass",
       proxy_host: "host",
-      proxy_port: "port"
+      proxy_port: "80"
     }
     ansible.sudo = true
-    ansible.playbook = "etc/ansible/site.yml"
-    ansible.inventory_path = "etc/ansible/hosts"
+    ansible.playbook = "scm/ansible/site.yml"
+    ansible.inventory_path = "scm/ansible/hosts"
     ansible.limit = "local"
   end
 
