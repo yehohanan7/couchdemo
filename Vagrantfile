@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
   config.vm.box = "precise32"
   config.vm.network "private_network", ip: "192.168.5.5"
-  config.vm.synced_folder ".", "/couchdemo"
+  config.vm.synced_folder "couchdb", "/couchdb"
   config.vm.network "forwarded_port", guest: 15986, host: 15986
   config.vm.network "forwarded_port", guest: 15984, host: 15984
   config.vm.network "forwarded_port", guest: 25986, host: 25986
