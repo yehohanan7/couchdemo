@@ -26,13 +26,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.verbose = "vvvv"
     ansible.extra_vars = {
       proxy_user: "user",
-      proxy_password: "pass",
+      proxy_password: "password",
       proxy_host: "host",
-      proxy_port: "80"
+      proxy_port: "port"
     }
     ansible.sudo = true
     ansible.playbook = "scm/ansible/site.yml"
-    ansible.inventory_path = "scm/ansible/hosts"
+    ansible.inventory_path = "hosts"
     ansible.limit = "local"
   end
 
